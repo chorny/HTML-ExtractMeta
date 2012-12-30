@@ -135,10 +135,10 @@ sub _build_title {
     my $self = shift;
 
     my @metas = (
-        'og:title',
         'title',
-        'twitter:title',
         'Title',
+        'og:title',
+        'twitter:title',
     );
 
     return $self->_get_meta_content( \@metas )->[0] || $self->_get_element_text( 'title' ) || '';
@@ -155,6 +155,7 @@ sub _build_description {
 
     my @metas = (
         'description',
+        'Description',
         'og:description',
         'twitter:description',
     );

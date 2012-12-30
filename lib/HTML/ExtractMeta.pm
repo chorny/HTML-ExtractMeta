@@ -135,9 +135,10 @@ sub _build_title {
     my $self = shift;
 
     my @metas = (
-        'title',
         'og:title',
+        'title',
         'twitter:title',
+        'Title',
     );
 
     return $self->_get_meta_content( \@metas )->[0] || $self->_get_element_text( 'title' ) || '';

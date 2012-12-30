@@ -130,7 +130,7 @@ sub _build_keywords {
     my $self = shift;
 
     my @metas = (
-        'keywords'
+        'keywords',
     );
 
     return [ split(/\s*,\s*/, $self->_get_meta_content(\@metas)) ];

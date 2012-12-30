@@ -129,9 +129,11 @@ sub _build_type {
 sub _build_keywords {
     my $self = shift;
 
-    my @keywords = split( /\s*,\s*/, $self->_get_meta_content(['name="keywords"']) );
+    my @metas = (
+        'keywords'
+    );
 
-    return \@keywords;
+    return [ split(/\s*,\s*/, $self->_get_meta_content(\@metas)) ];
 }
 
 __PACKAGE__->meta()->make_immutable();

@@ -32,7 +32,7 @@ BEGIN {
 
     my $EM = HTML::ExtractMeta->new( html => $html );
 
-    ok( $EM->get_title()        eq "Pixar Animator Dreams Up a New Superhero \x{2014} For Each Day of the Year | Wired Design | Wired.com", 'get_title()' );
+    ok( $EM->get_title()        eq "Pixar Animator Dreams Up a New Superhero \x{2014} For Each Day of the Year", 'get_title()' );
     ok( $EM->get_description()  eq "Most people think losing 10 pounds is an ambitious New Year\'s resolution, but Pixar artist Everett Downing set out to create 365 brand-new superheroes in one year. Downing has brought iconic characters to life in classics like Ratatouille, WALL-E, and Up, so coming up with a bullpen of his own characters seemed like a simple enough task.", 'get_description()' );
     ok( $EM->get_url()          eq "http://www.wired.com/design/2012/12/365-superheroes/", 'get_url()' );
     ok( $EM->get_image_url()    eq "http://www.wired.com/design/wp-content/uploads/2012/12/365-supers-wired-design-350x208.jpg", 'get_image_url()' );

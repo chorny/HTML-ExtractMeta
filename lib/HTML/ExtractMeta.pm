@@ -182,7 +182,7 @@ sub _build_url {
 
 =head2 get_image_url()
 
-Returns the HTML's image URL.
+Returns the HTML's first image URL.
 
 =cut
 

@@ -58,7 +58,7 @@ Returns the HTML's URL.
 
 ## get\_image\_url()
 
-Returns the HTML's image URL.
+Returns the HTML's first image URL.
 
 ## get\_image\_urls()
 

@@ -1,7 +1,15 @@
 Revision history for HTML::ExtractMeta
 
 
-0.05    2012-12-30
+0.06    2013-01-02
+        Added the get_author() method.
+        Added more tests.
+        Requires Mojolicious 3.71 because of memory leak fix in Mojo::DOM.
+        Improved the "locale" identification method.
+        Improved the documentation.
+
+
+0.05    2012-12-31
         Improved the documentation.
         Added requirements and their versions to dist.ini.
 

@@ -87,7 +87,7 @@ Returns the HTML's authors as an array reference.
 
 ## get\_keywords()
 
-Returns the HTML's keywords as an array reference.
+Returns the HTML's unique keywords as an array reference.
 
 # AUTHOR
 

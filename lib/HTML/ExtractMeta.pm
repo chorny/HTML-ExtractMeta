@@ -141,6 +141,7 @@ sub _build_title {
         'Title',
         'og:title',
         'twitter:title',
+        'DC.title',
     );
 
     return $self->_get_meta_content( \@metas )->[0] || $self->_get_element_text( 'title' ) || '';
@@ -258,6 +259,7 @@ sub _build_locale {
     my @metas = (
         'og:locale',
         'inLanguage',
+        'Content-Language',
     );
 
     return $self->_get_meta_content( \@metas )->[0] || '';
@@ -289,6 +291,7 @@ sub _build_authors {
         'author',
         'Author',
         'twitter:creator',
+        'DC.creator',
     );
 
     return $self->_get_meta_content( \@metas );
@@ -296,7 +299,7 @@ sub _build_authors {
 
 =head2 get_keywords()
 
-Returns the HTML's keywords as an array reference.
+Returns the HTML's unique keywords as an array reference.
 
 =cut
 
@@ -309,7 +312,17 @@ sub _build_keywords {
 
     my $keywords = $self->_get_meta_content( \@metas )->[0];
     if ( defined $keywords && length $keywords ) {
-        return [ split(/\s*,\s*/, $keywords) ];
+        my @keywords = ();
+        my %seen     = ();
+
+        foreach my $keyword ( split(/\s*,\s*/, $keywords) ) {
+            unless ( $seen{$keyword} ) {
+                push( @keywords, $keyword );
+                $seen{ $keyword }++;
+            }
+        }
+
+        return \@keywords;
     }
     else {
         return [];

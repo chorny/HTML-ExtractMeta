@@ -49,9 +49,6 @@ BEGIN {
 
     my $EM = HTML::ExtractMeta->new( html => $html );
 
-    # use Data::Dumper;
-    # print STDERR Dumper( $EM->get_authors() );
-
     ok( $EM->get_title()       eq "Charter bus skids on ice, kills 9 in Oregon - CNN.com", 'get_title()' );
     ok( $EM->get_description() eq "A bus in northern Oregon skidded on ice, crashed through a guardrail and tumbled down an embankment Sunday, killing nine people.", 'get_description()' );
     ok( $EM->get_url()         eq "http://www.cnn.com/2012/12/30/us/oregon-bus-crash/index.html", 'get_url()' );
@@ -63,6 +60,21 @@ BEGIN {
 
     is_deeply( $EM->get_authors(), ['CNN Staff', '@CNNI'], 'get_authors()' );
     is_deeply( $EM->get_keywords(), [], 'get_keywords()' );
+}
+
+{
+    my $html = read_file( $FindBin::Bin . '/html/washingtonpost.html' );
+
+    my $EM = HTML::ExtractMeta->new( html => $html );
+
+    ok( $EM->get_title()       eq "Officials: Obama to nominate Hagel for Defense, Brennan for CIA", 'get_title()' );
+    ok( $EM->get_description() eq "Announcement of the two major appointments expected Monday.", 'get_description()' );
+    ok( $EM->get_locale()      eq "en-US", 'get_locale()' );
+    ok( $EM->get_author()      eq "Scott Wilson", 'get_author()' );
+    ok( $EM->get_type()        eq "article", 'get_type()' );
+    ok( $EM->get_url()         eq "http://www.washingtonpost.com/politics/officials-obama-to-nominate-hagel-for-defense-brennan-for-cia/2013/01/07/22db7d4e-58c2-11e2-beee-6e38f5215402_story.html", 'get_url()' );
+
+    is_deeply( $EM->get_keywords(), ['president obama', 'obama hagel', 'obama brennan', 'white house 2012', 'white house transition', 'obama cabinet', 'democrats', 'republicans', 'inauguration', '2013 white house', '2013 cabinet', 'petraeus', 'cia', 'counterterrorism', 'nebraska'], 'get_keywords()' );
 }
 
 done_testing();
